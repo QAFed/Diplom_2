@@ -6,9 +6,13 @@ class TestUserSignUp:
         gen_user_data = add_gen_data_and_delete_user
         user_sign_up = UserSignUp(gen_user_data.for_sing_up())
         user_sign_up.request()
+        user_sign_up.check_status_code(200)
         user_sign_up.check_token_is_present()
         gen_user_data.access_token = user_sign_up.response.json().get("accessToken", None)
-        print(user_sign_up.response.json())
-        print(gen_user_data.access_token)
 
+    def test_user_not_sign_in_if_user_exist(self, add_and_delete_gen_user):
+        gen_user_data = add_and_delete_gen_user
+        user_sign_up = UserSignUp(gen_user_data.for_sing_up())
+        user_sign_up.request()
+        user_sign_up.check_status_code(403)
 
