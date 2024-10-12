@@ -15,3 +15,6 @@ class UserSignUp:
 
     def check_token_is_present(self):
         assert  self.response.json().get("accessToken", None) is not None
+
+    def check_text_message(self, expect_message):
+        assert self.response.json().get("message", None) == expect_message
