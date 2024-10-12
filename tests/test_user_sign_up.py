@@ -25,9 +25,7 @@ class TestUserSignUp:
         gen_user_data = add_gen_data_and_delete_user
         mod_gen_user_data = copy(gen_user_data.for_sing_up())
         mod_gen_user_data.pop(kill_param)
-        print(mod_gen_user_data)
         user_sign_up = UserSignUp(mod_gen_user_data)
         user_sign_up.request()
         user_sign_up.check_status_code(403)
-        print(user_sign_up.response.json())
         user_sign_up.check_text_message("Email, password and name are required fields")
