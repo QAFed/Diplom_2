@@ -8,3 +8,8 @@ class TestOrderGetUserList:
         get_list_order.check_status_code(200)
         get_list_order.check_order_list_exist()
 
+    def test_get_order_list_fail_if_user_not_authorized(self):
+        get_list_order = OrderGetUserList('')
+        get_list_order.request()
+        get_list_order.check_status_code(401)
+        get_list_order.check_text_message("You should be authorised")
