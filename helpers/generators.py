@@ -32,7 +32,7 @@ class GenUserData:
         }
         elif mod_params != []:
             for m_param in mod_params:
-                setattr(self, m_param, f'md{getattr(self,m_param, None)}')
+                setattr(self, m_param, f'md{getattr(self, m_param, None)}')
                 self.mod_data_request[m_param] = getattr(self, m_param, None)
 
         self.exp_mod_data_response = {
