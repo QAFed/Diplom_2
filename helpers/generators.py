@@ -14,3 +14,9 @@ class GenUserData:
             "password": self.password,
             "name": self.login
         }
+
+    def for_sing_in(self):
+        return {
+            "email": self.email,
+            "password": self.password
+        }
