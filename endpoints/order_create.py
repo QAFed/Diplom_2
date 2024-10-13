@@ -1,6 +1,7 @@
 import requests
 from main_data import Links
 
+
 class OrderCreate:
     def __init__(self, payload, access_token):
         self.endpoint = "/orders"
@@ -14,7 +15,7 @@ class OrderCreate:
     def check_status_code(self, status_code):
         assert self.response.status_code == status_code
 
-    def check_id_in_order_list(self,order_list):
+    def check_id_in_order_list(self, order_list):
         responce_list_ids = [ingredient['_id'] for ingredient in self.response.json()['order']['ingredients']]
         assert sorted(order_list) == sorted(responce_list_ids)
 

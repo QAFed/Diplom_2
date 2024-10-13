@@ -4,6 +4,7 @@ from endpoints.user_delete import UserDelete
 from endpoints.user_sign_up import UserSignUp
 from endpoints.order_create import OrderCreate
 
+
 @pytest.fixture
 def add_gen_data_and_delete_user():
     gen_user_data = GenUserData()
@@ -11,6 +12,7 @@ def add_gen_data_and_delete_user():
     if gen_user_data.access_token is not None:
         user_delete = UserDelete(gen_user_data.access_token)
         user_delete.request()
+
 
 @pytest.fixture
 def add_and_delete_gen_user():

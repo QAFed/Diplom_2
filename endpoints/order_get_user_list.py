@@ -1,6 +1,7 @@
 import requests
 from main_data import Links
 
+
 class OrderGetUserList:
     def __init__(self, access_token):
         self.endpoint = "/orders"
@@ -14,7 +15,7 @@ class OrderGetUserList:
         assert self.response.status_code == status_code
 
     def check_order_list_exist(self):
-        assert isinstance(self.response.json()['orders'],list)
+        assert isinstance(self.response.json()['orders'], list)
 
     def check_text_message(self, expect_message):
         assert self.response.json().get("message", None) == expect_message

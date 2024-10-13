@@ -1,5 +1,6 @@
 from endpoints.order_get_user_list import OrderGetUserList
 
+
 class TestOrderGetUserList:
     def test_get_order_list_success_if_user_authorized(self, add_user_and_order):
         access_token = add_user_and_order

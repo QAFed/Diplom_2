@@ -20,7 +20,7 @@ class TestUserSignUp:
         user_sign_up.check_status_code(403)
         user_sign_up.check_text_message("User already exists")
 
-    @pytest.mark.parametrize('kill_param', ["email","password","name"])
+    @pytest.mark.parametrize('kill_param', ["email", "password", "name"])
     def test_user_not_sign_in_if_not_all_required_fields_send(self, add_gen_data_and_delete_user, kill_param):
         gen_user_data = add_gen_data_and_delete_user
         mod_gen_user_data = copy(gen_user_data.for_sing_up())
