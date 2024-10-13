@@ -8,4 +8,4 @@ class UserDelete:
         self.response = None
 
     def request(self):
-        self.response = requests.post(Links.MAIN_URL + self.endpoint, headers=self.headers)
+        self.response = requests.delete(Links.MAIN_URL + self.endpoint, headers=self.headers)
