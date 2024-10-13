@@ -1,5 +1,5 @@
 import pytest
-
+from copy import copy
 from endpoints.user_sign_in import UserSignIn
 
 class TestUserSignIn:
@@ -10,9 +10,17 @@ class TestUserSignIn:
         user_sign_in.check_status_code(200)
         user_sign_in.check_token_is_present()
 
-    @pytest.mark.parametrize()
+    @pytest.mark.parametrize('mod_param', ["email", "password"])
 
-    def test_user_not_sign_in_if_wrong_name_or_pass(self, add_and_delete_gen_user):
+    def test_user_not_sign_in_if_wrong_email_or_pass(self, add_and_delete_gen_user, mod_param):
+        gen_user_data = add_and_delete_gen_user
+        mod_gen_user_data = copy(gen_user_data.for_sing_in())
+        mod_gen_user_data[mod_param] = f"wrng{mod_gen_user_data[mod_param]}"
+        user_sign_in = UserSignIn(mod_gen_user_data)
+        user_sign_in.request()
+        user_sign_in.check_status_code(401)
+        user_sign_in.check_text_message("email or password are incorrect")
+
 
 
 
