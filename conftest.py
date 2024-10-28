@@ -3,7 +3,7 @@ from helpers.generators import GenUserData
 from endpoints.user_delete import UserDelete
 from endpoints.user_sign_up import UserSignUp
 from endpoints.order_create import OrderCreate
-
+from helpers.test_data import TestData
 
 @pytest.fixture
 def add_gen_data_and_delete_user():
@@ -29,9 +29,6 @@ def add_and_delete_gen_user():
 @pytest.fixture
 def add_user_and_order(add_and_delete_gen_user):
     access_token = add_and_delete_gen_user.access_token
-    ingred_id_payload = {
-        "ingredients": ["61c0c5a71d1f82001bdaaa6d", "61c0c5a71d1f82001bdaaa6f"]
-    }
-    create_order = OrderCreate(ingred_id_payload, access_token)
+    create_order = OrderCreate(TestData.ingred_id_payload, access_token)
     create_order.request()
     yield access_token
