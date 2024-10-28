@@ -1,9 +1,11 @@
+import allure
 import pytest
 from helpers.generators import GenUserData
 from endpoints.user_delete import UserDelete
 from endpoints.user_sign_up import UserSignUp
 from endpoints.order_create import OrderCreate
 from helpers.test_data import TestData
+
 
 @pytest.fixture
 def add_gen_data_and_delete_user():
